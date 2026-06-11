@@ -5,6 +5,27 @@ on:
     branches: [ main, master, dev ]
   pull_request:
     branches: [ main, master, dev ]
+  schedule:
+    # Run test automatically at 00:00 AM Vietnam time (17:00 UTC) every day
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose Environment to run tests'
+        required: true
+        default: 'sit'
+        type: choice
+        options:
+          - sit
+          - stg
+      lang:
+        description: 'Choose Language pack'
+        required: true
+        default: 'en'
+        type: choice
+        options:
+          - en
+          - vn
 
 jobs:
   test:
@@ -30,7 +51,7 @@ jobs:
       - name: Run SauceDemo Tests in Parallel
         run: |
           cd saucedemo-automation
-          mvn clean test -Dheadless=true
+          mvn clean test -Dheadless=true -Denv=${{ github.event.inputs.environment || 'sit' }} -Dlang=${{ github.event.inputs.lang || 'en' }}
 
       - name: Upload Failure Screenshots
         if: failure() || always()

@@ -5,16 +5,16 @@
     <test name="Chrome Test Execution">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.saucedemo.tests.LoginTests" />
-            <class name="com.saucedemo.tests.CheckoutTests" />
+            <class name="tests.LoginTests" />
+            <class name="tests.CheckoutTests" />
         </classes>
     </test>
     
     <test name="Firefox Test Execution">
         <parameter name="browser" value="firefox" />
         <classes>
-            <class name="com.saucedemo.tests.LoginTests" />
-            <class name="com.saucedemo.tests.CheckoutTests" />
+            <class name="tests.LoginTests" />
+            <class name="tests.CheckoutTests" />
         </classes>
     </test>
     

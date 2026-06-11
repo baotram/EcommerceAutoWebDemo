@@ -13,7 +13,7 @@ import java.math.RoundingMode;
 import java.util.Map;
 
 @Listeners(TestListener.class)
-public class CheckoutTest extends BaseTest {
+public class CheckoutTests extends BaseTest {
 
     @DataProvider(name = "checkoutLoginData")
     public Object[][] getCheckoutLoginData() {
@@ -55,7 +55,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(completePage.isCompleteHeaderDisplayed(), "Complete header is not displayed.");
         Assert.assertEquals(completePage.getCompleteHeaderText().toLowerCase(), "thank you for your order!",
                 "Order complete header text did not match.");
-        captureScreenshot("Test Successful!");
+        captureScreenshot("Test Successful on "+getDriver()+"!");
     }
 
 }
