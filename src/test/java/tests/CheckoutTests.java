@@ -1,6 +1,7 @@
 package tests;
 
 import listeners.TestListener;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
@@ -55,7 +56,8 @@ public class CheckoutTests extends BaseTest {
         Assert.assertTrue(completePage.isCompleteHeaderDisplayed(), "Complete header is not displayed.");
         Assert.assertEquals(completePage.getCompleteHeaderText().toLowerCase(), "thank you for your order!",
                 "Order complete header text did not match.");
-        captureScreenshot("Test Successful on "+getDriver()+"!");
+        String browserName = ((RemoteWebDriver) getDriver()).getCapabilities().getBrowserName();
+        captureScreenshot("Test Successful on "+browserName+"!");
     }
 
 }
