@@ -7,7 +7,7 @@ on:
     branches: [ main, master, dev ]
   schedule:
     # Run test automatically at 00:00 AM Vietnam time (17:00 UTC) every day
-    - cron: '0 17 * * *'
+    - cron: '00 10 * * 5'
   workflow_dispatch:
     inputs:
       environment:
