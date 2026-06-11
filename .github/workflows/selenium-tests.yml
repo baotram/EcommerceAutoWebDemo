@@ -50,7 +50,6 @@ jobs:
 
       - name: Run EcommerceAutoWebDemo Tests in Parallel
         run: |
-          cd EcommerceAutoWebDemo
           mvn clean test -Dheadless=true -Denv=${{ github.event.inputs.environment || 'sit' }} -Dlang=${{ github.event.inputs.lang || 'en' }}
 
       - name: Upload Failure Screenshots
@@ -58,5 +57,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: selenium-failure-screenshots
-          path: EcommerceAutoWebDemo/target/screenshots/
+          path: target/screenshots/
           if-no-files-found: ignore
