@@ -11,7 +11,7 @@ public class CSVHelper {
 
     public static Object[][] readCSV(String filePath) {
         List<Object[]> dataList = new ArrayList<>();
-        
+
         try (InputStream is = CSVHelper.class.getClassLoader().getResourceAsStream(filePath)) {
             if (is == null) {
                 throw new IllegalArgumentException("File not found in resources: " + filePath);
@@ -22,14 +22,15 @@ public class CSVHelper {
                 while ((line = br.readLine()) != null) {
                     if (isHeader) {
                         isHeader = false;
-                        continue; // Bỏ qua dòng tiêu đề
+                        continue; //Skip the header row
                     }
-                    
-                    // Sử dụng split với limit -1 để giữ lại các trường trống ở cuối hoặc giữa
-                    // Regex này bỏ qua dấu phẩy nằm trong cặp dấu ngoặc kép
+
+
+                    // Use split with a limit of -1 to retain empty fields at the end or in the middle
+                    // This regex ignores commas located inside double quotes
                     String[] fields = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-                    
-                    // Loại bỏ khoảng trắng thừa hoặc dấu nháy kép (nếu có)
+
+                    // Trim whitespace or remove double quotes (if any)
                     for (int i = 0; i < fields.length; i++) {
                         fields[i] = fields[i].trim().replaceAll("^\"|\"$", "");
                     }
@@ -39,7 +40,7 @@ public class CSVHelper {
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Error reading CSV file " + filePath + ": " + e.getMessage());
         }
-        
+
         Object[][] data = new Object[dataList.size()][];
         for (int i = 0; i < dataList.size(); i++) {
             data[i] = dataList.get(i);
