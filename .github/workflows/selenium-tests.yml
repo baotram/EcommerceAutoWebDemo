@@ -48,9 +48,9 @@ jobs:
           google-chrome --version
           firefox --version
 
-      - name: Run SauceDemo Tests in Parallel
+      - name: Run EcommerceAutoWebDemo Tests in Parallel
         run: |
-          cd saucedemo-automation
+          cd EcommerceAutoWebDemo
           mvn clean test -Dheadless=true -Denv=${{ github.event.inputs.environment || 'sit' }} -Dlang=${{ github.event.inputs.lang || 'en' }}
 
       - name: Upload Failure Screenshots
