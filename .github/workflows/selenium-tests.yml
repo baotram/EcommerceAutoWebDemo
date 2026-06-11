@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main, master, dev ]
   schedule:
-    # Run test automatically at 00:00 AM Vietnam time (17:00 UTC) every day
+    # Run test automatically at 10:00 AM Vietnam time every Friday
     - cron: '00 10 * * 5'
   workflow_dispatch:
     inputs:
