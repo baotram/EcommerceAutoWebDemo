@@ -1,0 +1,5 @@
+username,password,expected_error_key
+invalid_user,secret_sauce,error.invalid_credentials
+locked_out_user,secret_sauce,error.locked_out
+,secret_sauce,error.username_required
+standard_user,,error.password_required
